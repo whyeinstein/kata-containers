@@ -301,6 +301,16 @@ jobs:
       commit-hash: ${{ inputs.commit-hash }}
       target-branch: ${{ inputs.target-branch }}
 
+  run-cri-containerd-tests-arm64:
+    if: ${{ inputs.skip-test != 'yes' }}
+    needs: build-kata-static-tarball-s390x
+    uses: ./.github/workflows/run-cri-containerd-tests-arm64.yaml
+    with:
+      tarball-suffix: -${{ inputs.tag }}
+      commit-hash: ${{ inputs.commit-hash }}
+      target-branch: ${{ inputs.target-branch }}
+ 
+
   run-cri-containerd-tests-s390x:
     if: ${{ inputs.skip-test != 'yes' }}
     needs: build-kata-static-tarball-s390x
