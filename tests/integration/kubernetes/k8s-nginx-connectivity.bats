@@ -41,6 +41,7 @@ setup() {
 	# or {.status.containerStatuses[0].state.terminated.reason} = "Completed"
 	[ $(kubectl get pods/$busybox_pod -o jsonpath="{.status.phase}") = "Succeeded" ]
 	kubectl logs "$busybox_pod" | grep "index.html"
+	/bin/fail
 }
 
 teardown() {

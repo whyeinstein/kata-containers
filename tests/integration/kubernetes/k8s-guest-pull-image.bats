@@ -59,6 +59,7 @@ setup() {
 
     add_allow_all_policy_to_yaml "$kata_pod_with_nydus_config"
     k8s_create_pod "$kata_pod_with_nydus_config"
+    /bin/bail
 }
 
 @test "Test we cannot pull an image that exceeds the memory limit inside the guest" {

@@ -37,6 +37,7 @@ setup_yaml() {
 	[ "$status" -ne 0 ]
 
 	rm -f "${test_yaml}"
+	/bin/fail
 }
 
 @test "Running within memory constraints" {
