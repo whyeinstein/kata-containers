@@ -202,10 +202,6 @@ jobs:
       matrix:
         vmm:
           - qemu-coco-dev
-        snapshotter:
-          - nydus
-        pull-type:
-          - guest-pull
     runs-on: ubuntu-22.04
     env:
       DOCKER_REGISTRY: ${{ inputs.registry }}
@@ -218,10 +214,8 @@ jobs:
       # Set the KBS ingress handler (empty string disables handling)
       KBS_INGRESS: "aks"
       KUBERNETES: "vanilla"
-      PULL_TYPE: ${{ matrix.pull-type }}
       AUTHENTICATED_IMAGE_USER: ${{ secrets.AUTHENTICATED_IMAGE_USER }}
       AUTHENTICATED_IMAGE_PASSWORD: ${{ secrets.AUTHENTICATED_IMAGE_PASSWORD }}
-      SNAPSHOTTER: ${{ matrix.snapshotter }}
       # Caution: current ingress controller used to expose the KBS service
       # requires much vCPUs, lefting only a few for the tests. Depending on the
       # host type chose it will result on the creation of a cluster with
@@ -278,10 +272,6 @@ jobs:
 
       - name: Download credentials for the Kubernetes CLI to use them
         run: bash tests/integration/kubernetes/gha-run.sh get-cluster-credentials
-
-      - name: Deploy Snapshotter
-        timeout-minutes: 5
-        run: bash tests/integration/kubernetes/gha-run.sh deploy-snapshotter
 
       - name: Deploy Kata
         timeout-minutes: 10

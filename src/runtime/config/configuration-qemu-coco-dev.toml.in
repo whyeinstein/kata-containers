@@ -716,4 +716,4 @@ dan_conf = "@DEFDANCONF@"
 
 # Enforce guest pull. This instructs the runtime to communicate to the agent via annotations that
 # the container image should be pulled in the guest, without using an external external snapshotter.
-# force_guest_pull = true
+force_guest_pull = true
