@@ -175,6 +175,9 @@ jobs:
     - publish-csi-driver-amd64
     env:
       GH_TOKEN: ${{ github.token }}
+    permissions:
+      actions: write
+      contents: read
     steps:
       - name: Checkout the code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
