@@ -188,6 +188,7 @@ jobs:
         run: |
           gh workflow run run-kata-coco-tests.yaml \
             --ref ${{ github.ref_name }} \
+            -f artifact-run-id=${{ github.run_id }} \
             -f tarball-suffix="-${{ inputs.tag }}" \
             -f registry=ghcr.io \
             -f repo=${{ github.repository_owner }}/kata-deploy-ci \
