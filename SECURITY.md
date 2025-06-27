@@ -9,9 +9,8 @@ Kata Containers is a **rolling-release** project: every monthly release replaces
 1. **Private first.**  
    Do **not** open a public GitHub issue or pull request.
 
-2. **Use the repository Security tab.**  
-   • Click **“Security ➜ Report a vulnerability.”**  
-   • This creates a private, access-restricted issue visible only to Kata maintainers and designated security champions.
+2. **Use the offical Github documentation on how to report a vulnerability.**
+   [Creating a repository security advisory](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/creating-a-repository-security-advisory#creating-a-security-advisory)
 
 3. **Response targets (OpenSSF guidelines).**  
    | Action | Target time | Notes |
@@ -26,7 +25,7 @@ Kata Containers is a **rolling-release** project: every monthly release replaces
 
 | Release | First published | Security-fix window |
 |---------|-----------------|---------------------|
-| **Latest monthly release** | see `git tag -l` | Actively maintained |
+| **Latest monthly release** | see `git tag --sort=-creatordate \| head -n 1` | Actively maintained |
 | Any prior release | — | **Unsupported** – please upgrade |
 
 > **Why no backports?**  
@@ -39,8 +38,8 @@ Kata Containers is a **rolling-release** project: every monthly release replaces
 1. We develop the fix on a private branch.  
 2. Once validated, we coordinate embargo dates with downstream consumers when appropriate.  
 3. The fix ships in **either**:
-   * A point release (e.g., `v3.18.1`) if the vulnerability affects only the current series, **or**
-   * The next regular monthly release (e.g., `v3.19`) when impact is moderate and waiting does not materially increase risk.
+   * Common: The next regular monthly release (e.g., `v3.19`) when impact is moderate and waiting does not materially increase risk, **or**
+   * Exception: A point release (e.g., `v3.18.1`) if the vulnerability affects only the current series.
 4. After the fix is public, we request a CVE ID (if not already issued) and publish details.
 
 ---
@@ -64,7 +63,7 @@ Kata Containers is a **rolling-release** project: every monthly release replaces
 A: No. Upgrade to the latest monthly release.
 
 **Q: Can I get early access to embargoed fixes?**  
-A: Only project members under the disclosure agreement (see [SECURITY_CONTACTS](https://kata-containers/kata-containers/SECURITY_CONTACTS)) receive advance patches.
+A: Only project members under the disclosure agreement (see [SECURITY_CONTACTS](SECURITY_CONTACTS)) receive advance patches.
 
 **Q: Where can I discuss the vulnerability once it is public?**  
 A: Open/continue a GitHub issue **after** the advisory is published, or use `#kata-containers` on Slack with a link to the advisory.
